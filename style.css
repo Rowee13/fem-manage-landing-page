@@ -459,24 +459,26 @@ input:where([type="text"], [type="email"]) {
 .slider {
 	display: flex;
 	list-style: none;
-	padding-block: var(--size-700);
+	gap: var(--size-600);
 }
 
 .slider > * {
 	position: relative;
-	width: 100%;
+	width: 400px;
 	flex: 0 0 auto;
-	border-radius: var(--size-300);
+}
+
+.slider-content {
+	border-radius: var(--size-100);
 	background: var(--clr-neutral-200);
+	padding: var(--size-800) var(--size-600) var(--size-600);
 }
 
 .slider img {
 	width: var(--size-800);
-	position: absolute;
-	inset: 0;
+	position: relative;
 	margin-inline: auto;
-	top: 0;
-	transform: translateY(-50%);
+	top: calc(var(--size-800) / 2);
 }
 
 /* utility classes */

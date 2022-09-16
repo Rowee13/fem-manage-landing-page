@@ -83,9 +83,10 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 -   [Vite](https://vitejs.dev/) - This can help setup your development environment. Can run vanilla Javascript and Typescript or use your favorite framework.
 -   [Google Fonts](https://fonts.google.com/) - Embed the font you need easily.
--   [Modern CSS Reset](https://piccalil.li/blog/a-modern-css-reset/) - Not needed but a big help to reset CSS default values
+-   [Modern CSS Reset](https://piccalil.li/blog/a-modern-css-reset/) - Not needed but a big help to reset CSS default values.
 -   [SVG Sprite](https://svgsprit.es/) - Can help you create an SVG file that contains multiple images, ideal for social media icons.
--   [Kevin Powell Tutorial](https://www.youtube.com/watch?v=h3bTwCqX4ns&list=PL4-IK0AVhVjNDRHoXGort7sDWcna8cGPA&index=1) - Very helpful for beginners or those who want to improve their CSS skills and build responsive website
+-   [A11Y Slider](https://a11yslider.js.org/) - Can help you create slider section on your website.
+-   [Kevin Powell Tutorial](https://www.youtube.com/watch?v=h3bTwCqX4ns&list=PL4-IK0AVhVjNDRHoXGort7sDWcna8cGPA&index=1) - Very helpful for beginners or those who want to improve their CSS skills and build responsive website.
 
 ## Acknowledgments
 

@@ -7,6 +7,7 @@
 	--clr-primary-400: hsl(228, 39%, 23%);
 
 	--clr-neutral-900: hsl(232, 12%, 13%);
+	--clr-neutral-200: hsl(0, 0%, 97%);
 	--clr-neutral-100: hsl(0, 0%, 100%);
 
 	--ff-primary: "Be Vietnam Pro", sans-serif;
@@ -164,6 +165,10 @@ button {
 	color: var(--clr-accent-400);
 }
 
+.button[data-shadow="none"] {
+	box-shadow: none;
+}
+
 /* navigation */
 
 .primary-header {
@@ -253,6 +258,108 @@ button {
 	position: fixed;
 } */
 
+/* footer */
+
+.primary-footer {
+	--logo-color: var(--clr-neutral-100);
+}
+
+.primary-footer-wrapper {
+	display: grid;
+	gap: var(--size-700);
+	grid-template-areas:
+		"form"
+		"nav"
+		"logo-social";
+}
+
+.primary-footer-logo-social {
+	grid-area: logo-social;
+
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+}
+.primary-footer-nav {
+	grid-area: nav;
+}
+.primary-footer-form {
+	grid-area: form;
+
+	display: grid;
+	align-content: space-between;
+}
+
+.primary-footer form {
+	display: flex;
+	gap: var(--size-300);
+}
+
+input:where([type="text"], [type="email"]) {
+	border-radius: 100vw;
+	border: 0;
+	padding: var(--size-300) var(--size-400);
+}
+
+@media (min-width: 50em) {
+	.primary-footer-wrapper {
+		grid-template-areas: "logo-social nav form";
+	}
+	.primary-footer-logo-social {
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: var(--size-300);
+	}
+}
+
+@media (max-width: 50em) {
+	.primary-footer-wrapper > * {
+		margin-inline: auto;
+	}
+}
+
+/* footer navigation */
+
+.footer-nav {
+	columns: 2;
+	gap: clamp(var(--size-200), 15vw, var(--size-900));
+}
+
+.footer-nav a {
+	color: var(--clr-neutral-100);
+	text-decoration: none;
+}
+
+.footer-nav a:is(:hover, :focus) {
+	color: var(--clr-neutral-100);
+}
+
+/* social-list */
+
+.social-list {
+	display: flex;
+	gap: var(--size-600);
+}
+
+.social-icon {
+	width: var(--size-600);
+	aspect-ratio: 1;
+	fill: var(--clr-neutral-100);
+}
+
+.social-list a:is(:hover, :focus) .social-icon {
+	fill: var(--clr-accent-400);
+}
+
+@media (min-width: 50em) {
+	.social-list {
+		gap: var(--size-300);
+	}
+	.social-icon {
+		width: var(--size-500);
+	}
+}
+
 /* CTA */
 
 .cta {
@@ -279,13 +386,106 @@ button {
 	opacity: 0.15;
 }
 
+/* numbered items */
+
+.numbered-items {
+	counter-reset: count;
+	width: fit-content;
+	margin-inline: auto;
+}
+
+.numbered-items li {
+	counter-increment: count;
+}
+
+.numbered-items div {
+	display: grid;
+	position: relative;
+	grid-template-columns: min-content 1fr;
+	align-items: center;
+	column-gap: var(--size-400);
+}
+
+.numbered-items div::before,
+.numbered-items div::after {
+	height: 40px;
+}
+
+.numbered-items div::before {
+	content: "0" counter(count);
+	display: flex;
+	align-items: center;
+	background-color: var(--clr-accent-400);
+	color: var(--clr-neutral-100);
+	font-weight: var(--fw-bold);
+	padding: 0 var(--size-500);
+	border-radius: 100vw;
+	grid-row: 1 / 2;
+	grid-column: 1 / 2;
+}
+
+@media (max-width: 50em) {
+	.numbered-items div::after {
+		--bg: var(--clr-accent-100);
+		content: "";
+		display: block;
+		z-index: -1;
+		border-radius: 100vw 0 0 100vw;
+		grid-column: 1 / -1;
+		grid-row: 1 / 2;
+		box-shadow: 5em 0 0 var(--bg);
+		background: var(--bg);
+	}
+}
+
+.numbered-items__title {
+	grid-row: 1 / 2;
+	grid-column: 2 / 3;
+	line-height: 1;
+}
+
+.numbered-items__body {
+	grid-column: 1 / -1;
+}
+
+@media (min-width: 30em) {
+	.numbered-items__body {
+		grid-column: 2 / -1;
+	}
+}
+
+/* slider */
+
+.slider {
+	display: flex;
+	list-style: none;
+	padding-block: var(--size-700);
+}
+
+.slider > * {
+	position: relative;
+	width: 100%;
+	flex: 0 0 auto;
+	border-radius: var(--size-300);
+	background: var(--clr-neutral-200);
+}
+
+.slider img {
+	width: var(--size-800);
+	position: absolute;
+	inset: 0;
+	margin-inline: auto;
+	top: 0;
+	transform: translateY(-50%);
+}
+
 /* utility classes */
 
 .container {
 	--max-width: 1110px;
-	--padding: 1rem;
+	--container-padding: 1rem;
 
-	width: min(var(--max-width), 100% - (var(--padding) * 2));
+	width: min(var(--max-width), 100% - (var(--container-padding) * 2));
 	margin-inline: auto;
 }
 
@@ -317,6 +517,23 @@ button {
 
 :where(.flow :not(:first-child)) {
 	margin-top: var(--flow-spacer, 2em);
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-center p {
+	margin-inline: auto;
+}
+
+@media (max-width: 50em) {
+	.text-center-sm-only {
+		text-align: center;
+	}
+	.text-center-sm-only p {
+		margin-inline: auto;
+	}
 }
 
 .text-primary-400 {
@@ -387,6 +604,10 @@ button {
 }
 .padding-block-700 {
 	padding-block: var(--size-700);
+}
+
+.margin-bottom-700 {
+	padding-block-end: var(--size-700);
 }
 
 .display-sm-none {
